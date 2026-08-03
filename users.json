@@ -1,0 +1,252 @@
+[
+  {
+    "username": "lina",
+    "email": "lina@example.com",
+    "password": "user123",
+    "display_name": "Lina",
+    "role": "admin",
+    "tags": ["平台运营", "活动策划"],
+    "avatar_url": "",
+    "bio": "益屿平台运营，热爱户外活动"
+  },
+  {
+    "username": "wangfang",
+    "email": "wangfang@example.com",
+    "password": "user123",
+    "display_name": "王芳",
+    "role": "user",
+    "tags": ["瑜伽", "冥想", "健康饮食"],
+    "avatar_url": "",
+    "bio": "瑜伽教练，喜欢在公园里带大家晨练"
+  },
+  {
+    "username": "zhangwei",
+    "email": "zhangwei@example.com",
+    "password": "user123",
+    "display_name": "老张",
+    "role": "user",
+    "tags": ["摄影", "旅行", "自驾"],
+    "avatar_url": "",
+    "bio": "自由摄影师，周末喜欢到处拍照"
+  },
+  {
+    "username": "chenyu",
+    "email": "chenyu@example.com",
+    "password": "user123",
+    "display_name": "陈雨",
+    "role": "user",
+    "tags": ["读书", "写作", "咖啡"],
+    "avatar_url": "",
+    "bio": "独立撰稿人，每周组织读书会"
+  },
+  {
+    "username": "liuyang",
+    "email": "liuyang@example.com",
+    "password": "user123",
+    "display_name": "刘洋",
+    "role": "user",
+    "tags": ["跑步", "马拉松", "健身"],
+    "avatar_url": "",
+    "bio": "全马330，跑步社群主理人"
+  },
+  {
+    "username": "zhaojing",
+    "email": "zhaojing@example.com",
+    "password": "user123",
+    "display_name": "赵静",
+    "role": "user",
+    "tags": ["烘焙", "美食", "亲子"],
+    "avatar_url": "",
+    "bio": "烘焙爱好者，两个孩子的妈妈"
+  },
+  {
+    "username": "sunhao",
+    "email": "sunhao@example.com",
+    "password": "user123",
+    "display_name": "孙浩",
+    "role": "user",
+    "tags": ["创业", "AI", "投资"],
+    "avatar_url": "",
+    "bio": "连续创业者，关注AI和硬科技"
+  },
+  {
+    "username": "zhoumin",
+    "email": "zhoumin@example.com",
+    "password": "user123",
+    "display_name": "周敏",
+    "role": "user",
+    "tags": ["舞蹈", "拉丁", "爵士"],
+    "avatar_url": "",
+    "bio": "舞蹈老师，擅长拉丁和爵士"
+  },
+  {
+    "username": "wuxiaoming",
+    "email": "wuxiaoming@example.com",
+    "password": "user123",
+    "display_name": "吴小明",
+    "role": "user",
+    "tags": ["桌游", "剧本杀", "社交"],
+    "avatar_url": "",
+    "bio": "桌游店老板，周末组织各种局"
+  },
+  {
+    "username": "linxiaoyun",
+    "email": "linxiaoyun@example.com",
+    "password": "user123",
+    "display_name": "林小云",
+    "role": "user",
+    "tags": ["插画", "手绘", "设计"],
+    "avatar_url": "",
+    "bio": "自由插画师，偶尔开班授课"
+  },
+  {
+    "username": "huanglei",
+    "email": "huanglei@example.com",
+    "password": "user123",
+    "display_name": "黄磊",
+    "role": "user",
+    "tags": ["烹饪", "美食", "生活"],
+    "avatar_url": "",
+    "bio": "前厨师，现在做美食自媒体"
+  },
+  {
+    "username": "xumengyao",
+    "email": "xumengyao@example.com",
+    "password": "user123",
+    "display_name": "姚姚",
+    "role": "user",
+    "tags": ["音乐", "吉他", "民谣"],
+    "avatar_url": "",
+    "bio": "独立音乐人，在鼓楼开小酒吧"
+  },
+  {
+    "username": "gaopeng",
+    "email": "gaopeng@example.com",
+    "password": "user123",
+    "display_name": "大鹏",
+    "role": "user",
+    "tags": ["骑行", "户外", "探险"],
+    "avatar_url": "",
+    "bio": "骑行10年，环过青海湖和川藏线"
+  },
+  {
+    "username": "machunxia",
+    "email": "machunxia@example.com",
+    "password": "user123",
+    "display_name": "马春霞",
+    "role": "user",
+    "tags": ["志愿者", "公益", "环保"],
+    "avatar_url": "",
+    "bio": "公益组织负责人，关注环保和流浪动物"
+  },
+  {
+    "username": "tangzhiyuan",
+    "email": "tangzhiyuan@example.com",
+    "password": "user123",
+    "display_name": "唐志远",
+    "role": "user",
+    "tags": ["国学", "书法", "太极"],
+    "avatar_url": "",
+    "bio": "中学语文老师，业余研究书法"
+  },
+  {
+    "username": "hemiao",
+    "email": "hemiao@example.com",
+    "password": "user123",
+    "display_name": "何苗",
+    "role": "user",
+    "tags": ["花艺", "手工", "生活美学"],
+    "avatar_url": "",
+    "bio": "花艺工作室主理人"
+  },
+  {
+    "username": "luoqiang",
+    "email": "luoqiang@example.com",
+    "password": "user123",
+    "display_name": "罗强",
+    "role": "user",
+    "tags": ["篮球", "NBA", "运动"],
+    "avatar_url": "",
+    "bio": "篮球教练，周末打野球"
+  },
+  {
+    "username": "songyu",
+    "email": "songyu@example.com",
+    "password": "user123",
+    "display_name": "宋雨",
+    "role": "user",
+    "tags": ["电影", "纪录片", "影评"],
+    "avatar_url": "",
+    "bio": "影评人，每周组织观影会"
+  },
+  {
+    "username": "xujing",
+    "email": "xujing@example.com",
+    "password": "user123",
+    "display_name": "许静",
+    "role": "user",
+    "tags": ["心理学", "读书会", "成长"],
+    "avatar_url": "",
+    "bio": "心理咨询师，喜欢通过读书认识自己"
+  },
+  {
+    "username": "hanlei",
+    "email": "hanlei@example.com",
+    "password": "user123",
+    "display_name": "韩磊",
+    "role": "user",
+    "tags": ["钓鱼", "户外", "露营"],
+    "avatar_url": "",
+    "bio": "钓龄15年，周末不是在钓鱼就是在去钓鱼的路上"
+  },
+  {
+    "username": "fengxiaoli",
+    "email": "fengxiaoli@example.com",
+    "password": "user123",
+    "display_name": "冯晓丽",
+    "role": "user",
+    "tags": ["亲子", "教育", "绘本"],
+    "avatar_url": "",
+    "bio": "绘本馆馆长，周末组织亲子活动"
+  },
+  {
+    "username": "dengchao",
+    "email": "dengchao@example.com",
+    "password": "user123",
+    "display_name": "邓超",
+    "role": "user",
+    "tags": ["电竞", "游戏", "直播"],
+    "avatar_url": "",
+    "bio": "游戏主播，偶尔组织线下粉丝聚会"
+  },
+  {
+    "username": "pengli",
+    "email": "pengli@example.com",
+    "password": "user123",
+    "display_name": "彭丽",
+    "role": "user",
+    "tags": ["茶道", "传统文化", "养生"],
+    "avatar_url": "",
+    "bio": "茶艺师，经营一间小茶馆"
+  },
+  {
+    "username": "xieyiming",
+    "email": "xieyiming@example.com",
+    "password": "user123",
+    "display_name": "谢一鸣",
+    "role": "user",
+    "tags": ["开源", "编程", "黑客松"],
+    "avatar_url": "",
+    "bio": "全栈工程师，开源社区活跃贡献者"
+  },
+  {
+    "username": "guoer",
+    "email": "guoer@example.com",
+    "password": "user123",
+    "display_name": "郭二",
+    "role": "user",
+    "tags": ["脱口秀", "喜剧", "即兴"],
+    "avatar_url": "",
+    "bio": "脱口秀演员，每周开放麦"
+  }
+]
