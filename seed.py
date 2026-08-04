@@ -223,6 +223,10 @@ def main():
     if not args.no_participants:
         simulate_participants(args.base_url, events, user_map)
 
+    # Step 4: Seed achievements and points
+    if not args.no_participants:
+        seed_achievements(args.base_url, user_map)
+
     print("🎉 Seed complete!")
     print(f"\n📋 Quick test accounts:")
     print(f"   Admin: admin / admin123")
@@ -233,3 +237,51 @@ def main():
 
 if __name__ == "__main__":
     main()
+ACHIEVEMENT_DEFINITIONS = [
+    {"name": "首次活动", "description": "创建或参加第一个活动", "icon": "🎯", "points": 100},
+    {"name": "活动达人", "description": "累计参加5个活动", "icon": "⭐", "points": 500},
+    {"name": "组织能手", "description": "发布3个活动", "icon": "🏅", "points": 300},
+    {"name": "社交之星", "description": "报名参加1个活动", "icon": "🌟", "points": 50},
+    {"name": "摄影爱好者", "description": "上传1张活动照片", "icon": "📸", "points": 100},
+    {"name": "评论家", "description": "发表1条活动评论", "icon": "💬", "points": 80},
+    {"name": "早起鸟", "description": "提前3天报名活动", "icon": "🐦", "points": 200},
+    {"name": "全勤王", "description": "连续参加3个活动", "icon": "👑", "points": 1000},
+]
+
+
+def seed_achievements(base_url: str, user_map: dict):
+    """Seed achievements and points for users."""
+    print("📦 Seeding achievements and points...")
+
+    points_actions = [
+        ("hiker01", 1280, "参加徒步活动 + 发布活动"),
+        ("event_master", 2100, "组织多个活动获得积分"),
+        ("climber", 2450, "多次户外活动获得积分"),
+        ("nature_lover", 980, "参加公益活动获得积分"),
+        ("photo_fan", 750, "上传照片获得积分"),
+        ("music_lover", 500, "参加音乐活动获得积分"),
+        ("bookworm", 300, "参加读书分享会获得积分"),
+        ("runner", 600, "参加马拉松获得积分"),
+        ("tech_geek", 400, "参加技术讲座获得积分"),
+        ("foodie", 350, "参加美食活动获得积分"),
+    ]
+
+    seeded = 0
+    for username, points, desc in points_actions:
+        if username not in user_map:
+            continue
+        token = user_map[username]["token"]
+        headers = {"Authorization": f"Bearer {token}"}
+        payload = {
+            "points": points,
+            "description": f"[模拟] {desc}",
+            "related_event_id": None,
+        }
+        try:
+            resp = requests.post(f"{base_url}/achievements/points", json=payload, headers=headers)
+            if resp.status_code in (200, 201):
+                seeded += 1
+        except requests.ConnectionError:
+            pass
+
+    print(f"  → {seeded} users received points ({len(points_actions)} configured)\n")
