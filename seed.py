@@ -121,7 +121,6 @@ def seed_events(base_url: str, events: list, user_map: dict):
             "type": event["type"],
             "category": event["category"],
             "start_time": event["start_time"],
-            "status": "published",
             "tags": event.get("tags", []),
         }
         if event.get("end_time"):
@@ -137,10 +136,18 @@ def seed_events(base_url: str, events: list, user_map: dict):
             payload["price"] = event["price"]
 
         try:
+            # Create event (backend always sets status to "draft")
             resp = requests.post(f"{base_url}/events", json=payload, headers=headers)
             if resp.status_code in (200, 201):
-                created += 1
-                print(f"  ✅ {event['title']}")
+                event_id = resp.json().get("id")
+                # Publish the event so it's open for registration
+                pub_resp = requests.put(f"{base_url}/events/{event_id}/publish", headers=headers)
+                if pub_resp.status_code in (200, 201):
+                    created += 1
+                    print(f"  ✅ {event['title']} (已发布)")
+                else:
+                    print(f"  ⚠️ {event['title']}: 创建成功但发布失败: {pub_resp.status_code} {pub_resp.text[:80]}")
+                    errors += 1
             else:
                 print(f"  ❌ {event['title']}: {resp.status_code} {resp.text[:80]}")
                 errors += 1
