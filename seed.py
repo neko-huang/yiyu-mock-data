@@ -245,21 +245,46 @@ def main():
 if __name__ == "__main__":
     main()
 ACHIEVEMENT_DEFINITIONS = [
-    {"name": "首次活动", "description": "创建或参加第一个活动", "icon": "🎯", "points": 100},
-    {"name": "活动达人", "description": "累计参加5个活动", "icon": "⭐", "points": 500},
-    {"name": "组织能手", "description": "发布3个活动", "icon": "🏅", "points": 300},
-    {"name": "社交之星", "description": "报名参加1个活动", "icon": "🌟", "points": 50},
-    {"name": "摄影爱好者", "description": "上传1张活动照片", "icon": "📸", "points": 100},
-    {"name": "评论家", "description": "发表1条活动评论", "icon": "💬", "points": 80},
-    {"name": "早起鸟", "description": "提前3天报名活动", "icon": "🐦", "points": 200},
-    {"name": "全勤王", "description": "连续参加3个活动", "icon": "👑", "points": 1000},
+    {"name": "首次参与", "description": "第一次参加活动", "icon": "🌟", "condition_type": "participate_count", "condition_value": 1, "is_limited": False},
+    {"name": "活跃达人", "description": "累计参加10次活动", "icon": "🔥", "condition_type": "participate_count", "condition_value": 10, "is_limited": False},
+    {"name": "组织先锋", "description": "成功组织5场活动", "icon": "👑", "condition_type": "organize_count", "condition_value": 5, "is_limited": False},
+    {"name": "摄影大师", "description": "上传100张照片", "icon": "📸", "condition_type": "photo_count", "condition_value": 100, "is_limited": False},
+    {"name": "评论家", "description": "发表1条活动复盘", "icon": "💬", "condition_type": "review_count", "condition_value": 1, "is_limited": False},
+    {"name": "签到达人", "description": "签到3次活动", "icon": "✅", "condition_type": "checkin_count", "condition_value": 3, "is_limited": False},
+    {"name": "积分富翁", "description": "累计获得1000积分", "icon": "💰", "condition_type": "points_total", "condition_value": 1000, "is_limited": False},
+    {"name": "限定·创世人", "description": "平台首批100名用户", "icon": "🏆", "condition_type": "early_adopter", "condition_value": 1, "is_limited": True},
 ]
 
 
 def seed_achievements(base_url: str, user_map: dict):
-    """Seed achievements and points for users."""
+    """Seed achievement definitions and points for users."""
     print("📦 Seeding achievements and points...")
 
+    # 获取管理员 token
+    admin_token = None
+    for username, info in user_map.items():
+        u = next((u for u in load_json("users.json") if u["username"] == username), None)
+        if u and u.get("role") == "admin":
+            admin_token = info["token"]
+            break
+    if not admin_token:
+        print("  ⚠️ No admin user found, skipping achievement seeding")
+        return
+
+    admin_headers = {"Authorization": f"Bearer {admin_token}"}
+
+    # 创建成就定义
+    created = 0
+    for ach in ACHIEVEMENT_DEFINITIONS:
+        try:
+            resp = requests.post(f"{base_url}/achievements", json=ach, headers=admin_headers)
+            if resp.status_code in (200, 201):
+                created += 1
+        except requests.ConnectionError:
+            pass
+    print(f"  → {created} achievement definitions created")
+
+    # 为部分用户预置积分（通过管理员手动加分）
     points_actions = [
         ("hiker01", 1280, "参加徒步活动 + 发布活动"),
         ("event_master", 2100, "组织多个活动获得积分"),
@@ -277,15 +302,14 @@ def seed_achievements(base_url: str, user_map: dict):
     for username, points, desc in points_actions:
         if username not in user_map:
             continue
-        token = user_map[username]["token"]
-        headers = {"Authorization": f"Bearer {token}"}
+        target_id = user_map[username]["user_id"]
         payload = {
+            "target_user_id": target_id,
             "points": points,
             "description": f"[模拟] {desc}",
-            "related_event_id": None,
         }
         try:
-            resp = requests.post(f"{base_url}/achievements/points", json=payload, headers=headers)
+            resp = requests.post(f"{base_url}/achievements/points", json=payload, headers=admin_headers)
             if resp.status_code in (200, 201):
                 seeded += 1
         except requests.ConnectionError:
